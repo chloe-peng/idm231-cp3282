@@ -1,0 +1,54 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(../font/Montserrat.ttf);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    --background-color: #FFFBF0;
+    --text-color:  #DB7D57;
+}
+
+h1, h2, h3, h4, p, button, ul, li, a {
+    margin-block: 7px;
+    font-family: Montserrat;
+    color: var(--text-color);
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 0.9;
+}
+
+h2 {
+    font-size: 30px;
+    font-weight: 600;
+    line-height: 0.9;
+}
+
+h3 {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 0.9;
+}
+
+h4 {
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1;
+}
+
+li, a, button {
+    font-size: 16px;
+    font-weight: 500;
+}
