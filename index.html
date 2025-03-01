@@ -8,7 +8,29 @@
         <link rel="stylesheet" href="./css/screens.css">
     </head>
     <body>
-        
-        <script src="./js/zodiac.js"></script>
+        <main>
+            <section id="instructions"> 
+                <h1>What flower are you?</h1>
+                <h3>Based on your zodiac</h3>
+
+                <form>
+                    <div class="control">
+                        <input type="date" name="birthday" required>
+                    </div> 
+                    
+                    <div class="control">
+                        <button type="submit">Submit</button> 
+                    <div>
+
+                    <ul class="errors" hidden></ul> 
+                </form> 
+            </section>  
+               
+            <section id="zodiac-grid">
+            </section>
+
+        </main>
+    
+    <script src="./js/main.js"></script>
     </body>
 </html>

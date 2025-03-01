@@ -7,12 +7,16 @@
     box-sizing: border-box;
 }
 
+body {
+    background-color: var(--background-color);
+}
+
 html {
     --background-color: #FFFBF0;
     --text-color:  #DB7D57;
 }
 
-h1, h2, h3, h4, p, button, ul, li, a {
+h1, h2, h3, h4, p, ul, li, a {
     margin-block: 7px;
     font-family: Montserrat;
     color: var(--text-color);
@@ -51,4 +55,48 @@ p {
 li, a, button {
     font-size: 16px;
     font-weight: 500;
+}
+
+/* reset button stylings */
+button {
+	background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 4fr 1fr;
+    grid-template-rows: 1fr 3fr;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#instructions {
+    grid-column-start: 2;
+    grid-row-start: 1;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#zodiac-grid {
+    grid-column-start: 2;
+    grid-row-start: 2;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+
+    justify-content: center;
+    align-items: center;
+
+    img {
+        width: 100%;
+    }
 }
