@@ -1,50 +1,62 @@
-const contentArray = [
+const content_array = [
     {
         name: 'Capricorn',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Aquarius',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Pisces',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Aries',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Taurus',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Gemini',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Cancer',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Leo',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Virgo',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Libra',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Scorpio',
+        description: 'you got this flower bc of this',
     },
 
     {
         name: 'Sagittarius',
+        description: 'you got this flower bc of this',
     },
 ]
 
@@ -53,43 +65,50 @@ const contentArray = [
 // });
   
 
-function createButton() {
+function create_button() {
     const section = document.getElementById('zodiac-grid');
 
-    contentArray.forEach((item) => {
+    content_array.forEach((item) => {
         const card = document.createElement('div');
         const btn = document.createElement('button');
+
+        card.style.display = 'flex';
+        card.style.flexWrap = 'wrap';
+        card.style.justifyContent = 'center';
+        card.style.alignItems = 'center';
+    
         const text = document.createElement('p');
-        const img = document.createElement('img');
-    
         text.innerHTML = item.name;
-        img.src = `./images/${item.name}_flower.jpg`;
-    
-        btn.appendChild(img); // Make the image the button
-        btn.addEventListener('click', () => {
-            alert(`You clicked on ${item.name}`);
-        });
-    
-        card.id = item.name;
+        btn.classList.add(item.name);
+        btn.id = item.name;
+
+        const img = document.createElement('img');
+        img.src = `./images/${item.name}_flower.jpg`;    
+        btn.appendChild(img);
+
+        btn.addEventListener('click', open_popup);
+
         card.appendChild(btn);
         card.appendChild(text);
         section.appendChild(card);
     });
 }
 
-function styleButton() {
+create_button();
+console.log('createButton completed');
 
-    contentArray.forEach((item) => {
-        const card = document.getElementById(item);
+function open_popup() {
+  document.body.style.backgroundColor = 'blue';
 
-        card.style.display = flex;
-        card.style.flexDirection = column;
-        card.style.alignItems = clear;
-    });
+  const container = document.createElement('div');
+  container.style.display = 'flex';
+  container.style.width = '50&';
+  container.style.backgroundColor = 'red';
+
+
 }
 
-createButton();
-console.log('createButton completed');
+const clicked_button = document.addEventListener('click', open_popup);
 
 /**
  * @description
