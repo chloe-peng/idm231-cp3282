@@ -159,3 +159,7 @@ main {
         width: 100%;
     }
 }
+
+#side_popup {
+    display: none;
+}

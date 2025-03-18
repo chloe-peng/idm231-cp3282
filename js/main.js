@@ -96,6 +96,58 @@ const content_array = [
 //   document.body.appendChild(container);
 // }
 
+// let num_button_clicked = 0;
+
+// function create_side_panel(zodiac) {
+//   const main_section = document.querySelector('main');
+//   main_section.style.gridTemplateColumns = '1fr 4fr 4fr 1fr';
+
+//   const buttons_section = document.getElementById('zodiac-grid');
+//   buttons_section.style.gridTemplateColumns = 'repeat(4, 1fr)';
+//   buttons_section.style.gridTemplateRows = 'repeat(3, 1fr)';
+
+//   const top_section = document.createElement('div');
+//   // Top Section SetUp
+//   top_section.style.gridColumn = '3 / span 2';
+//   top_section.style.gridRow = '1';
+//   top_section.style.height = '100%';
+//   top_section.id = 'top_section';
+
+//   // Top Section Styling
+//   top_section.style.borderStyle = 'none none none solid';
+//   top_section.style.borderColor = '#434343';
+//   top_section.style.borderWidth = '1px';
+//   top_section.style.borderRadius = '20px 0px 0px 0px';
+//   top_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
+//   top_section.style.clipPath = 'inset(-10px -10px 0px -10px)';
+
+//   // Top Section Grid Layout
+//   top_section.style.display = 'grid';
+//   top_section.style.gridTemplateColumns = 'repeat(3, 1fr)';
+//   top_section.style.justifyContent = 'center';
+//   top_section.style.alignItems = 'end';
+
+
+//   const bottom_section = document.createElement('div');
+//   // Bottom Section SetUp
+//   bottom_section.style.gridColumn = '3 / span 2';
+//   bottom_section.style.gridRow = '2';
+//   bottom_section.style.height = '100%';
+//   bottom_section.id = 'bottom_section';
+
+//   // Bototm Section Styling
+//   bottom_section.style.borderStyle = 'none none none solid';
+//   bottom_section.style.borderColor = '#434343';
+//   bottom_section.style.borderWidth = '1px';
+//   bottom_section.style.borderRadius = '0px 0px 0px 20px';
+//   bottom_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
+//   bottom_section.style.clipPath = 'inset(0px -10px -10px -10px)';
+
+//   console.log('side panel created');
+
+//   card_popup(zodiac);
+// }
+
 function card_popup(zodiac) {
     const main_section = document.querySelector('main');
     main_section.style.gridTemplateColumns = '1fr 4fr 4fr 1fr';
@@ -104,21 +156,13 @@ function card_popup(zodiac) {
     buttons_section.style.gridTemplateColumns = 'repeat(4, 1fr)';
     buttons_section.style.gridTemplateRows = 'repeat(3, 1fr)';
 
-    // const side_panel = document.createElement('div');
-    // side_panel.style.gridColumn = '3 / span 2';
-    // side_panel.style.gridRow = '1 / span 2';
-    // side_panel.style.height = '100%';
-    // side_panel.style.alignItems = 'center';
-    // side_panel.style.borderRadius = '20px 0px 0px 20px';
-    // side_panel.style.margin = '10px 0px 10px 10px';
-    // side_panel.style.backgroundColor = 'blue';
-
     const top_section = document.createElement('div');
     // Top Section SetUp
     top_section.style.gridColumn = '3 / span 2';
     top_section.style.gridRow = '1';
     top_section.style.height = '100%';
-  
+    top_section.id = 'top_section';
+
     // Top Section Styling
     top_section.style.borderStyle = 'none none none solid';
     top_section.style.borderColor = '#434343';
@@ -139,6 +183,8 @@ function card_popup(zodiac) {
     bottom_section.style.gridColumn = '3 / span 2';
     bottom_section.style.gridRow = '2';
     bottom_section.style.height = '100%';
+    bottom_section.id = 'bottom_section';
+    bottom_section.style.justifyContent = 'center';
 
     // Bototm Section Styling
     bottom_section.style.borderStyle = 'none none none solid';
@@ -148,26 +194,29 @@ function card_popup(zodiac) {
     bottom_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
     bottom_section.style.clipPath = 'inset(0px -10px -10px -10px)';
 
-    for (let i = 0; i < content_array.length; i++) {
-      if (content_array[i].name === zodiac) {
-        // top_section.style.backgroundColor = content_array[i].color;
-        // bottom_section.style.backgroundColor = content_array[i].color;
+      for (let i = 0; i < content_array.length; i++) {
+        if (content_array[i].name === zodiac) {
+          // top_section.style.backgroundColor = content_array[i].color;
+          // bottom_section.style.backgroundColor = content_array[i].color;
 
-        // Place IMG in the Top Section
-        const img_div = document.createElement('div');
-        const image = document.createElement('img');
-        image.src = `./images/${zodiac}_flower.jpg`;
-        image.style.width = '100%';  
-        img_div.appendChild(image);
+          // Place IMG in the Top Section
+          const img_div = document.createElement('div');
+          const image = document.createElement('img');
+          image.src = `./images/${zodiac}_flower.jpg`;
+          image.style.width = '100%';  
+          img_div.appendChild(image);
 
-        img_div.style.gridColumn = '2';
-        top_section.appendChild(img_div);
+          img_div.style.gridColumn = '2';
+          top_section.appendChild(img_div);
 
-        // Place all the text in the Bottom Section
-        
-        
+          // Place all the text in the Bottom Section
+          const zodiac_name = document.createElement('h1')
+          zodiac_name.innerHTML = content_array[i].name;
+          bottom_section.appendChild(zodiac_name);
+          
+          
+        }
       }
-    }
 
     main_section.appendChild(top_section);
     main_section.appendChild(bottom_section);
@@ -283,8 +332,13 @@ function getZodiac(month, day) {
 
         // FIX ERROR FUNCTION LATER
         const errors = [];
-        if ((date_object.year > 9999) && !errors.includes('Year must have 4 digits')) {
+        if ((date_object.year > 9999)) {
           const error_text = 'Year must have 4 digits';
+          errors.forEach((error) => {
+            if (error != error_text) {
+
+            };
+          })
           errors.push(error_text);
           form.elements['birthday'].focus(); 
       }
@@ -311,6 +365,15 @@ function getZodiac(month, day) {
 
         const selected_zodiac = getZodiac(date_object.month, date_object.day);
         card_popup(selected_zodiac);
+
+      // console.log(num_button_clicked == 0);
+      // if (num_button_clicked == 0) {
+      //   create_side_panel(selected_zodiac);
+      //   num_button_clicked++;
+      // }
+      // else {
+      //   card_popup(selected_zodiac);
+      // }
 }
 
 if (form) {
