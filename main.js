@@ -108,7 +108,6 @@ function open_popup() {
 function card_popup(zodiac) {
     open_popup();
 
-
     const top_section = document.getElementById('top_section');
     const bottom_section = document.getElementById('bottom_section');
 
@@ -243,10 +242,7 @@ function create_button() {
   });
 }
 
-
-function initialize() {
-
-}
+create_button();
 
 const form = document.querySelector('form');
 const error_list = document.querySelector('.errors');
@@ -258,6 +254,8 @@ function log_birthday(birthday) {
       month: parseInt(birthday[1], 10),
       day: parseInt(birthday[2], 10)
     }
+
+    console.log('log_birthday completed');
     return date;
 }
 
@@ -274,34 +272,46 @@ function log_birthday(birthday) {
 function getZodiac(month, day) {
 
     if ((month === 12 && day >= 22) || (month === 1 && day <= 19)) {
+      console.log('capricorn');
       return 'Capricorn';
     } else if ((month === 11 && day >= 22) || (month === 12 && day <= 21)) {
+      console.log('sag');
       return 'Sagittarius';
     } else if ((month === 10 && day >= 24) || (month === 11 && day <= 21)) {
+      console.log('scorpio');
       return 'Scorpio';
     } else if ((month === 9 && day >= 23) || (month === 10 && day <= 23)) {
+      console.log('libra');
       return 'Libra';
     } else if ((month === 8 && day >= 23) || (month === 9 && day <= 22)) {
+      console.log('virgo');
       return 'Virgo';
     } else if ((month === 7 && day >= 23) || (month === 8 && day <= 22)) {
+      console.log('leo');
       return 'Leo';
     } else if ((month === 6 && day >= 22) || (month === 7 && day <= 22)) {
+      console.log('cancer');
       return 'Cancer';
     } else if ((month === 5 && day >= 21) || (month === 6 && day <= 21)) {
+      console.log('gemini');
       return 'Gemini';
     } else if ((month === 4 && day >= 20) || (month === 5 && day <= 20)) {
+      console.log('taurus');
       return 'Taurus';
     } else if ((month === 3 && day >= 21) || (month === 4 && day <= 19)) {
+      console.log('aries');
       return 'Aries';
     } else if ((month === 2 && day >= 19) || (month === 3 && day <= 20)) {
+      console.log('pisces');
       return 'Pisces';
     } else if ((month === 1 && day >= 20) || (month === 2 && day <= 18)) {
+      console.log('aquarius');
       return 'Aquarius';
     } else return null;
   }
 
 
-  function handle_submit() {
+  function handle_submit(event) {
     event.preventDefault();
         const date_object = log_birthday(form.elements['birthday'].value.split('-'));
 
@@ -340,19 +350,9 @@ function getZodiac(month, day) {
           }
 
         const selected_zodiac = getZodiac(date_object.month, date_object.day);
-
-        const sound_file = `./audio/${selected_zodiac}_audio.mp3`;
-        const audio = new Audio(sound_file);
-        console.log('uploaded/saved new audio file');
-        // all_sounds.push(audio);
-        stop_all_sounds();
-        audio.play();
-
         card_popup(selected_zodiac);
 }
 
 if (form) {
-    form.addEventListener('submit', () => {
-      handle_submit;
-    });
+    form.addEventListener('submit', handle_submit);
 }

@@ -160,6 +160,10 @@ main {
     }
 }
 
-#side_popup {
+#top_section {
+    display: none;
+}
+
+#bottom_section {
     display: none;
 }
