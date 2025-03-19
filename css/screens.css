@@ -137,6 +137,8 @@ main {
 }
 
 #instructions {
+    margin-block: 10px;
+
     grid-column-start: 2;
     grid-row-start: 1;
 
@@ -145,6 +147,8 @@ main {
 }
 
 #zodiac-grid {
+    margin-block: 10px;
+    
     grid-column-start: 2;
     grid-row-start: 2;
 
@@ -166,4 +170,16 @@ main {
 
 #bottom_section {
     display: none;
+}
+
+#help {
+    grid-column-start: 2;
+    grid-row-start: 1;
+
+    justify-self: end;
+    align-self: start;
+
+    img {
+        width: 50px;
+    }
 }

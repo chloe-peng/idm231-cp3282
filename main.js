@@ -103,6 +103,88 @@ function open_popup() {
       top_section.style.display = 'grid';
       bottom_section.style.display = 'grid';
   }
+
+   // Top Section SetUp
+  top_section.style.gridColumn = '3 / span 2';
+  top_section.style.gridRow = '1';
+  top_section.style.height = '100%';
+  
+      // Top Section Styling
+  top_section.style.borderStyle = 'none none none solid';
+  top_section.style.borderColor = '#434343';
+  top_section.style.borderWidth = '1px';
+  top_section.style.borderRadius = '20px 0px 0px 0px';
+  top_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
+  top_section.style.clipPath = 'inset(-10px -10px 0px -10px)';
+
+  // Top Section Grid Layout
+  top_section.style.gridTemplateColumns = 'repeat(3, 1fr)';
+  top_section.style.justifyContent = 'center';
+  top_section.style.alignItems = 'end';
+
+  // Bottom Section SetUp
+  bottom_section.style.gridColumn = '3 / span 2';
+  bottom_section.style.gridRow = '2';
+  bottom_section.style.height = '100%';
+  bottom_section.style.justifyContent = 'center';
+  
+  // Bottom Section Styling
+  bottom_section.style.borderStyle = 'none none none solid';
+  bottom_section.style.borderColor = '#434343';
+  bottom_section.style.borderWidth = '1px';
+  bottom_section.style.borderRadius = '0px 0px 0px 20px';
+  bottom_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
+  bottom_section.style.clipPath = 'inset(0px -10px -10px -10px)';
+
+  // Bottom Section Grid Layout
+  bottom_section.style.gridTemplateColumns = '1fr 4fr 1fr';
+  bottom_section.style.justifyContent = 'center';
+  bottom_section.style.alignItems = 'center';
+}
+
+function help_popup() {
+  open_popup();
+
+  const top_section = document.getElementById('top_section');
+  const bottom_section = document.getElementById('bottom_section');
+  bottom_section.style.gridTemplateRows = '30px 30px 20px 330px 30px';
+
+
+  // Place IMG in the Top Section
+  const img_div = document.getElementById('img_div');
+  const image = img_div.querySelector('img');
+  image.src = `./images/help_symbol.png`;
+  image.style.width = '100%';  
+  img_div.style.gridColumn = '2';
+
+  const bottom_children = bottom_section.querySelectorAll('div');
+  bottom_children.forEach(child => {
+      child.style.gridColumn = '2';
+      child.style.justifySelf = 'center';
+  });
+
+  // Place all the text in the Bottom Section
+  const title_div = document.getElementById('title');
+  const title_text = title_div.querySelector('h2');
+  title_text.innerHTML = 'Help Section';
+  
+  const subtitle_div = document.getElementById('subtitle');
+  const subtitle_text = subtitle_div.querySelector('h4');
+  subtitle_text.innerHTML = 'How to Use the Zodiac X Flower Website:';
+            
+  const extra_info_div = document.getElementById('extra_information');
+  const extra_info_text = extra_info_div.querySelector('p');
+  extra_info_text.innerHTML = 'You can either:';
+  extra_info_div.style.fontStyle = 'italic';
+  
+  const description_div = document.getElementById('description');
+  const description_text = description_div.querySelector('p');
+  description_text.innerHTML = '1. Start by simply enter your birthday into the date field on the left. Once you submit your birthday, a popup will appear showing your flower assigned to your zodiac.<br><br> 2. Or if you would like to learn about the flowers assigned to other zodiac signs, you can also use the buttons provided on the left of each flower. By clicking through the buttons, you can explore each zodiac sign and see the flower associated with it, even if it is not your own.<br><br><b>Please note, this website does not collect or store any data, so simply enjoy the interaction and share it with your friends if you\'d enjoyed it!<b>';
+}
+
+function help_button() {
+  const help_btn = document.getElementById('help_button');
+  help_btn.addEventListener('click', help_popup);
 }
 
 function card_popup(zodiac) {
@@ -111,44 +193,8 @@ function card_popup(zodiac) {
     const top_section = document.getElementById('top_section');
     const bottom_section = document.getElementById('bottom_section');
 
-    // Top Section SetUp
-    top_section.style.gridColumn = '3 / span 2';
-    top_section.style.gridRow = '1';
-    top_section.style.height = '100%';
-
-    // Top Section Styling
-    top_section.style.borderStyle = 'none none none solid';
-    top_section.style.borderColor = '#434343';
-    top_section.style.borderWidth = '1px';
-    top_section.style.borderRadius = '20px 0px 0px 0px';
-    top_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
-    top_section.style.clipPath = 'inset(-10px -10px 0px -10px)';
-
-    // Top Section Grid Layout
-    top_section.style.gridTemplateColumns = 'repeat(3, 1fr)';
-    top_section.style.justifyContent = 'center';
-    top_section.style.alignItems = 'end';
-
-    
-    // Bottom Section SetUp
-    bottom_section.style.gridColumn = '3 / span 2';
-    bottom_section.style.gridRow = '2';
-    bottom_section.style.height = '100%';
-    bottom_section.style.justifyContent = 'center';
-
-    // Bototm Section Styling
-    bottom_section.style.borderStyle = 'none none none solid';
-    bottom_section.style.borderColor = '#434343';
-    bottom_section.style.borderWidth = '1px';
-    bottom_section.style.borderRadius = '0px 0px 0px 20px';
-    bottom_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
-    bottom_section.style.clipPath = 'inset(0px -10px -10px -10px)';
-
     // Bottom Section Grid Layout
-    bottom_section.style.gridTemplateColumns = '1fr 4fr 1fr';
-    bottom_section.style.gridTemplateRows = '30px 20px 20px auto 30px';
-    bottom_section.style.justifyContent = 'center';
-    bottom_section.style.alignItems = 'start';
+    bottom_section.style.gridTemplateRows = '30px 30px 20px 200px 30px';
 
     const bottom_children = bottom_section.querySelectorAll('div');
     bottom_children.forEach(child => {
@@ -165,22 +211,22 @@ function card_popup(zodiac) {
           const description = content_array[i].description;
 
           // Place IMG in the Top Section
-          const flower_img_div = document.getElementById('flower_img');
+          const flower_img_div = document.getElementById('img_div');
           const image = flower_img_div.querySelector('img');
           image.src = `./images/${zodiac}_flower.jpg`;
           image.style.width = '100%';  
           flower_img_div.style.gridColumn = '2';
 
           // Place all the text in the Bottom Section
-          const flower_result_div = document.getElementById('flower_result_div');
+          const flower_result_div = document.getElementById('title');
           const flower_result_text = flower_result_div.querySelector('h2');
           flower_result_text.innerHTML = `You\'re a ${flower}!`;
 
-          const zodiac_name_div = document.getElementById('zodiac_name');
+          const zodiac_name_div = document.getElementById('subtitle');
           const zodiac_name_text = zodiac_name_div.querySelector('h4');
           zodiac_name_text.innerHTML = zodiac;
           
-          const zodiac_timeframe_div = document.getElementById('zodiac_timeframe');
+          const zodiac_timeframe_div = document.getElementById('extra_information');
           const zodiac_timeframe_text = zodiac_timeframe_div.querySelector('p');
           zodiac_timeframe_text.innerHTML = timeframe;
           zodiac_timeframe_div.style.fontStyle = 'italic';
@@ -242,7 +288,15 @@ function create_button() {
   });
 }
 
-create_button();
+function initialize() {
+  create_button();
+  console.log('create_button completed');
+  help_button();
+  console.log('help_button completed');
+}
+
+window.addEventListener('load', initialize);
+console.log('initialize completed');
 
 const form = document.querySelector('form');
 const error_list = document.querySelector('.errors');
@@ -312,8 +366,8 @@ function getZodiac(month, day) {
 
 
   function handle_submit(event) {
-    event.preventDefault();
-        const date_object = log_birthday(form.elements['birthday'].value.split('-'));
+        event.preventDefault();
+        const date_object = log_birthday(form.elements['date'].value.split('-'));
 
 
         // FIX ERROR FUNCTION LATER
@@ -350,6 +404,12 @@ function getZodiac(month, day) {
           }
 
         const selected_zodiac = getZodiac(date_object.month, date_object.day);
+
+        const sound_file = `./audio/${selected_zodiac}_audio.mp3`;
+        const audio = new Audio(sound_file);
+        stop_all_sounds();
+        audio.play();
+
         card_popup(selected_zodiac);
 }
 

@@ -103,53 +103,91 @@ function open_popup() {
       top_section.style.display = 'grid';
       bottom_section.style.display = 'grid';
   }
+
+   // Top Section SetUp
+  top_section.style.gridColumn = '3 / span 2';
+  top_section.style.gridRow = '1';
+  top_section.style.height = '100%';
+  
+      // Top Section Styling
+  top_section.style.borderStyle = 'none none none solid';
+  top_section.style.borderColor = '#434343';
+  top_section.style.borderWidth = '1px';
+  top_section.style.borderRadius = '20px 0px 0px 0px';
+  top_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
+  top_section.style.clipPath = 'inset(-10px -10px 0px -10px)';
+
+  // Top Section Grid Layout
+  top_section.style.gridTemplateColumns = 'repeat(3, 1fr)';
+  top_section.style.justifyContent = 'center';
+  top_section.style.alignItems = 'end';
+
+  // Bottom Section SetUp
+  bottom_section.style.gridColumn = '3 / span 2';
+  bottom_section.style.gridRow = '2';
+  bottom_section.style.height = '100%';
+  bottom_section.style.justifyContent = 'center';
+  
+  // Bototm Section Styling
+  bottom_section.style.borderStyle = 'none none none solid';
+  bottom_section.style.borderColor = '#434343';
+  bottom_section.style.borderWidth = '1px';
+  bottom_section.style.borderRadius = '0px 0px 0px 20px';
+  bottom_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
+  bottom_section.style.clipPath = 'inset(0px -10px -10px -10px)';
+
+  // Bottom Section Grid Layout
+  bottom_section.style.gridTemplateColumns = '1fr 4fr 1fr';
+  bottom_section.style.justifyContent = 'center';
+  bottom_section.style.alignItems = 'start';
+}
+
+
+function help_popup() {
+  open_popup();
+
+  const top_section = document.getElementById('top_section');
+  const bottom_section = document.getElementById('bottom_section');
+
+  // Place IMG in the Top Section
+  const flower_img_div = document.getElementById('flower_img');
+  const image = flower_img_div.querySelector('img');
+  image.src = `./images/help_synbol.png`;
+  image.style.width = '100%';  
+  flower_img_div.style.gridColumn = '2';
+
+
+  // Place all the text in the Bottom Section
+  const flower_result_div = document.getElementById('flower_result_div');
+  const flower_result_text = flower_result_div.querySelector('h2');
+  flower_result_text.innerHTML = 'Help Section';
+  
+  const zodiac_name_div = document.getElementById('zodiac_name');
+  const zodiac_name_text = zodiac_name_div.querySelector('h4');
+  zodiac_name_text.innerHTML = 'Introducing a <em>Flower X Zodiac</em> Generator';
+            
+  const zodiac_timeframe_div = document.getElementById('zodiac_timeframe');
+  const zodiac_timeframe_text = zodiac_timeframe_div.querySelector('p');
+  zodiac_timeframe_text.innerHTML = '';
+  zodiac_timeframe_div.style.fontStyle = 'italic';
+  
+  const description_div = document.getElementById('description');
+  const description_text = description_div.querySelector('p');
+  description_text.innerHTML = 'Put any date of your choice and find out what flower you (or your friend) is ';
+}
+
+function help_button() {
+  const help_btn = document.getElementById('help_button');
+  help_btn.addEventListener('click', help_popup);
 }
 
 function card_popup(zodiac) {
     open_popup();
 
-
     const top_section = document.getElementById('top_section');
     const bottom_section = document.getElementById('bottom_section');
 
-    // Top Section SetUp
-    top_section.style.gridColumn = '3 / span 2';
-    top_section.style.gridRow = '1';
-    top_section.style.height = '100%';
-
-    // Top Section Styling
-    top_section.style.borderStyle = 'none none none solid';
-    top_section.style.borderColor = '#434343';
-    top_section.style.borderWidth = '1px';
-    top_section.style.borderRadius = '20px 0px 0px 0px';
-    top_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
-    top_section.style.clipPath = 'inset(-10px -10px 0px -10px)';
-
-    // Top Section Grid Layout
-    top_section.style.gridTemplateColumns = 'repeat(3, 1fr)';
-    top_section.style.justifyContent = 'center';
-    top_section.style.alignItems = 'end';
-
-    
-    // Bottom Section SetUp
-    bottom_section.style.gridColumn = '3 / span 2';
-    bottom_section.style.gridRow = '2';
-    bottom_section.style.height = '100%';
-    bottom_section.style.justifyContent = 'center';
-
-    // Bototm Section Styling
-    bottom_section.style.borderStyle = 'none none none solid';
-    bottom_section.style.borderColor = '#434343';
-    bottom_section.style.borderWidth = '1px';
-    bottom_section.style.borderRadius = '0px 0px 0px 20px';
-    bottom_section.style.boxShadow = '0px 0px 15px 0px rgba(67, 67, 67, 0.15)';
-    bottom_section.style.clipPath = 'inset(0px -10px -10px -10px)';
-
-    // Bottom Section Grid Layout
-    bottom_section.style.gridTemplateColumns = '1fr 4fr 1fr';
     bottom_section.style.gridTemplateRows = '30px 20px 20px auto 30px';
-    bottom_section.style.justifyContent = 'center';
-    bottom_section.style.alignItems = 'start';
 
     const bottom_children = bottom_section.querySelectorAll('div');
     bottom_children.forEach(child => {
@@ -234,7 +272,7 @@ function create_button() {
       btn.addEventListener('click', () => {
         stop_all_sounds();
         audio.play();
-        card_popup(item.name)
+        card_popup(item.name);
       });
 
       btn.appendChild(text);
@@ -245,8 +283,14 @@ function create_button() {
 
 
 function initialize() {
-
+  create_button();
+  console.log('create_button completed');
+  help_button();
+  console.log('help_button completed');
 }
+
+window.addEventListener('load', initialize);
+console.log('initialize completed');
 
 const form = document.querySelector('form');
 const error_list = document.querySelector('.errors');
