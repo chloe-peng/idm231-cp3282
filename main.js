@@ -154,6 +154,7 @@ function help_popup() {
   const img_div = document.getElementById('img_div');
   const image = img_div.querySelector('img');
   image.src = `./images/help_symbol.png`;
+  image.alt = 'Question mark symbol';
   image.style.width = '100%';  
   img_div.style.gridColumn = '2';
 
@@ -214,6 +215,7 @@ function card_popup(zodiac) {
           const flower_img_div = document.getElementById('img_div');
           const image = flower_img_div.querySelector('img');
           image.src = `./images/${zodiac}_flower.jpg`;
+          image.alt = `Artwork of ${flower}`
           image.style.width = '100%';  
           flower_img_div.style.gridColumn = '2';
 
@@ -270,6 +272,7 @@ function create_button() {
 
       const img = document.createElement('img');
       img.src = `./images/${item.name}_flower.jpg`;    
+      img.alt = `Artwork of ${item.flower}`
       btn.appendChild(img);
 
       const sound_file = `./audio/${item.name}_audio.mp3`

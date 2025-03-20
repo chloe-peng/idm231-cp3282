@@ -110,11 +110,11 @@ button[type=submit] {
     /* justify-content: center; */
 
     margin: 5px auto;
+}
 
-    img {
-        width: 18px;
-        height: 18px;
-    }
+.inline-img img {
+    width: 18px;
+    height: 18px;
 }
 
 form {
@@ -148,7 +148,7 @@ main {
 
 #zodiac-grid {
     margin-block: 10px;
-    
+
     grid-column-start: 2;
     grid-row-start: 2;
 
@@ -158,10 +158,10 @@ main {
 
     justify-content: center;
     align-self: start;
+}
 
-    img {
-        width: 100%;
-    }
+#zodiac-grid img {
+    width: 100%;
 }
 
 #top_section {
@@ -178,8 +178,8 @@ main {
 
     justify-self: end;
     align-self: start;
+}
 
-    img {
-        width: 50px;
-    }
+#help img {
+    width: 50px;
 }
